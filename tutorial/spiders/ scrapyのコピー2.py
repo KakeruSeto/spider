@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+
+import scrapy
+from datetime import datetime
+
+
+class QuotesSpider(scrapy.Spider):
+    name = "gak3"
+
+    def start_requests(self):
+        urls = [
+ "https://www.gakkou.net/daigaku/view/index_10535.html", "https://www.gakkou.net/daigaku/view/index_10483.html", "https://www.gakkou.net/daigaku/view/index_10437.html", "https://www.gakkou.net/daigaku/view/index_10435.html", "https://www.gakkou.net/daigaku/view/index_10236.html", "https://www.gakkou.net/daigaku/view/index_10561.html", "https://www.gakkou.net/daigaku/view/index_10095.html", "https://www.gakkou.net/daigaku/view/index_10517.html", "https://www.gakkou.net/daigaku/view/index_10134.html", "https://www.gakkou.net/daigaku/view/index_10474.html", "https://www.gakkou.net/daigaku/view/index_10322.html", "https://www.gakkou.net/daigaku/view/index_10423.html", "https://www.gakkou.net/daigaku/view/index_10527.html", "https://www.gakkou.net/daigaku/view/index_10394.html", "https://www.gakkou.net/daigaku/view/index_10351.html", "https://www.gakkou.net/daigaku/view/index_10021.html", "https://www.gakkou.net/daigaku/view/index_10020.html", "https://www.gakkou.net/daigaku/view/index_10342.html", "https://www.gakkou.net/daigaku/view/index_10339.html", "https://www.gakkou.net/daigaku/view/index_10334.html", "https://www.gakkou.net/daigaku/view/index_10258.html", "https://www.gakkou.net/daigaku/view/index_10308.html", "https://www.gakkou.net/daigaku/view/index_10143.html", "https://www.gakkou.net/daigaku/view/index_10289.html", "https://www.gakkou.net/daigaku/view/index_10740.html", "https://www.gakkou.net/daigaku/view/index_10741.html", "https://www.gakkou.net/daigaku/view/index_10451.html", "https://www.gakkou.net/daigaku/view/index_10536.html", "https://www.gakkou.net/daigaku/view/index_10804.html", "https://www.gakkou.net/daigaku/view/index_10434.html", "https://www.gakkou.net/daigaku/view/index_10738.html", "https://www.gakkou.net/daigaku/view/index_10359.html", "https://www.gakkou.net/daigaku/view/index_10034.html", "https://www.gakkou.net/daigaku/view/index_10613.html", "https://www.gakkou.net/daigaku/view/index_10626.html", "https://www.gakkou.net/daigaku/view/index_10303.html", "https://www.gakkou.net/daigaku/view/index_10305.html", "https://www.gakkou.net/daigaku/view/index_10178.html", "https://www.gakkou.net/daigaku/view/index_10118.html", "https://www.gakkou.net/daigaku/view/index_10724.html", "https://www.gakkou.net/daigaku/view/index_10224.html", "https://www.gakkou.net/daigaku/view/index_10306.html", "https://www.gakkou.net/daigaku/view/index_10357.html", "https://www.gakkou.net/daigaku/view/index_10097.html", "https://www.gakkou.net/daigaku/view/index_10320.html", "https://www.gakkou.net/daigaku/view/index_10736.html", "https://www.gakkou.net/daigaku/view/index_10405.html", "https://www.gakkou.net/daigaku/view/index_10406.html", "https://www.gakkou.net/daigaku/view/index_10408.html", "https://www.gakkou.net/daigaku/view/index_10421.html",
+"https://www.gakkou.net/daigaku/view/index_10518.html", "https://www.gakkou.net/daigaku/view/index_10500.html", "https://www.gakkou.net/daigaku/view/index_10501.html", "https://www.gakkou.net/daigaku/view/index_10566.html", "https://www.gakkou.net/daigaku/view/index_10060.html", "https://www.gakkou.net/daigaku/view/index_10316.html", "https://www.gakkou.net/daigaku/view/index_10231.html", "https://www.gakkou.net/daigaku/view/index_10220.html", "https://www.gakkou.net/daigaku/view/index_10779.html", "https://www.gakkou.net/daigaku/view/index_10370.html", "https://www.gakkou.net/daigaku/view/index_10494.html", "https://www.gakkou.net/daigaku/view/index_10103.html", "https://www.gakkou.net/daigaku/view/index_10107.html", "https://www.gakkou.net/daigaku/view/index_10504.html", "https://www.gakkou.net/daigaku/view/index_10294.html", "https://www.gakkou.net/daigaku/view/index_10623.html", "https://www.gakkou.net/daigaku/view/index_10018.html", "https://www.gakkou.net/daigaku/view/index_10680.html", "https://www.gakkou.net/daigaku/view/index_10552.html", "https://www.gakkou.net/daigaku/view/index_10554.html", "https://www.gakkou.net/daigaku/view/index_10557.html", "https://www.gakkou.net/daigaku/view/index_10270.html", "https://www.gakkou.net/daigaku/view/index_10084.html", "https://www.gakkou.net/daigaku/view/index_10086.html", "https://www.gakkou.net/daigaku/view/index_10088.html", "https://www.gakkou.net/daigaku/view/index_10089.html", "https://www.gakkou.net/daigaku/view/index_10800.html", "https://www.gakkou.net/daigaku/view/index_10665.html", "https://www.gakkou.net/daigaku/view/index_10448.html", "https://www.gakkou.net/daigaku/view/index_10327.html", "https://www.gakkou.net/daigaku/view/index_10330.html", "https://www.gakkou.net/daigaku/view/index_10100.html", "https://www.gakkou.net/daigaku/view/index_10346.html", "https://www.gakkou.net/daigaku/view/index_10250.html", "https://www.gakkou.net/daigaku/view/index_10699.html", "https://www.gakkou.net/daigaku/view/index_10385.html", "https://www.gakkou.net/daigaku/view/index_10041.html", "https://www.gakkou.net/daigaku/view/index_10313.html", "https://www.gakkou.net/daigaku/view/index_10138.html", "https://www.gakkou.net/daigaku/view/index_10028.html", "https://www.gakkou.net/daigaku/view/index_10391.html", "https://www.gakkou.net/daigaku/view/index_10196.html", "https://www.gakkou.net/daigaku/view/index_10454.html", "https://www.gakkou.net/daigaku/view/index_10153.html", "https://www.gakkou.net/daigaku/view/index_10541.html", "https://www.gakkou.net/daigaku/view/index_10113.html", "https://www.gakkou.net/daigaku/view/index_10123.html", "https://www.gakkou.net/daigaku/view/index_10045.html"
+ ]
+
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
+
+    def parse(self, response):
+        for quote in response.css('body'):
+            yield{
+                "学校名": response.css("th:contains('学校名') + td").xpath('string()').extract_first(),
+                "学校区分": response.css("th:contains('学校区分') + td").xpath('string()').extract_first(),
+                "設置区分": response.css("th:contains('設置区分') + td").xpath('string()').extract_first(),
+                "所在地": response.css("th:contains('所在地') + td").xpath('string()').extract_first(),
+                "電話番号": response.css("th:contains('電話番号') + td").xpath('string()').extract_first(),
+                "取得時間": datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
+            }
+
+    custom_settings = {
+        "DOWNLOAD_DELAY": 3.0,
+    }
